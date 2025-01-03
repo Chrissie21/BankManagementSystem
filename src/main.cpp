@@ -13,13 +13,13 @@ int main() {
     savings.deposit(200);
     savings.withdraw(100);
     savings.applyInterest();
-    savings.display();
+    savings.displayTransactions(); // Show transaction history
 
     cout << "\nChecking Account Details:" << endl;
     checking.display();
     checking.deposit(300);
     checking.withdraw(700);
-    checking.display();
+    checking.displayTransactions(); // Show transaction history
 
     return 0;
 }
