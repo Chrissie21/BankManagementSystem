@@ -1,5 +1,5 @@
-#ifndef SAVINGS_ACCOUNT_H
-#define SAVINGS_ACCOUNT_H
+#ifndef SAVINGSACCOUNT_H
+#define SAVINGSACCOUNT_H
 
 #include "Account.h"
 
@@ -8,14 +8,9 @@ private:
     double interestRate;
 
 public:
-    // Constructor
     SavingsAccount(string acctNum, double bal, double rate);
-
-    // Method to apply interest
     void applyInterest();
-
-    // Overriding display method
-    void display() override;
+    void display() const override;
 };
 
-#endif  // SAVINGS_ACCOUNT_H
+#endif // SAVINGSACCOUNT_H
