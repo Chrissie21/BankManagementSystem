@@ -1,7 +1,7 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-#include <iostream>
+#include <string>
 using namespace std;
 
 class Account {
@@ -10,14 +10,11 @@ protected:
     double balance;
 
 public:
-    // Constructor
     Account(string acctNum, double bal);
-
-    // Methods
-    void deposit(double amount);
-    void withdraw(double amount);
-    double getBalance();
-    virtual void display();  // Virtual function for future overrides
+    virtual void display() const;
+    virtual void deposit(double amount);
+    virtual void withdraw(double amount);
+    virtual ~Account();
 };
 
-#endif  // ACCOUNT_H
+#endif // ACCOUNT_H
