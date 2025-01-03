@@ -16,8 +16,8 @@ protected:
 public:
     Account(string acctNum, double bal);
     virtual void display() const;
-    virtual void deposit(double amount);
-    virtual void withdraw(double amount);
+    virtual void deposit(double amount, Logger& logger);
+    virtual void withdraw(double amount, Logger& logger);
     void displayTransactions() const; // Display transaction log
     virtual ~Account();
 

@@ -21,7 +21,6 @@ void createSavingsAccount(vector<shared_ptr<Account>>& accounts, Logger& logger)
 
     accounts.push_back(make_shared<SavingsAccount>(acctNum, balance, rate));
     cout << "Savings Account created successfully!\n";
-    // Log the action
     logger.log("Created Savings Account with number " + acctNum);
 }
 
@@ -37,18 +36,17 @@ void createCheckingAccount(vector<shared_ptr<Account>>& accounts, Logger& logger
 
     accounts.push_back(make_shared<CheckingAccount>(acctNum, balance, limit));
     cout << "Checking Account created successfully!\n";
-    // Log the action
     logger.log("Created Checking Account with number " + acctNum);
 }
 
 shared_ptr<Account> findAccount(const vector<shared_ptr<Account>>& accounts, const string& acctNum) {
     for (const auto& account : accounts) {
-        if (account->getAccountNumber() == acctNum) { // Assuming `getAccountNumber()` exists in the Account class
+        if (account->getAccountNumber() == acctNum) {
             return account;
         }
     }
     cout << "Account not found.\n";
-    return nullptr; // Return null if account isn't found
+    return nullptr;
 }
 
 void runMenu(vector<shared_ptr<Account>>& accounts, Logger& logger) {
@@ -76,18 +74,15 @@ void runMenu(vector<shared_ptr<Account>>& accounts, Logger& logger) {
                 auto account = findAccount(accounts, acctNum);
                 if (account) {
                     account->display();
-                    // Log display details action
                     logger.log("Displayed details for account number " + acctNum);
                 } else {
                     cout << "Account not found.\n";
-                    // Log failed attempt
                     logger.log("Failed to display details for account number " + acctNum + " (account not found)");
                 }
                 break;
             }
             case 4:
                 cout << "Exiting the program.\n";
-                // Log exit action
                 logger.log("User exited the program.");
                 break;
             default:
@@ -99,26 +94,22 @@ void runMenu(vector<shared_ptr<Account>>& accounts, Logger& logger) {
 
 int main() {
     vector<shared_ptr<Account>> accounts;
-    Logger logger("banking_log.txt"); // Initialize logger
+    Logger logger("banking_log.txt"); // Initialize the logger
 
-    // Log the program startup
     logger.log("Banking system started.");
 
-    // Account creation
-    createSavingsAccount(accounts, logger);
+    createSavingsAccount(accounts, logger);  // Account creation logged
     createCheckingAccount(accounts, logger);
 
-    // Perform a deposit transaction example and log it
+    // Assuming a specific account exists, e.g. Savings Account "S123"
     auto account = findAccount(accounts, "S123");
     if (account) {
-        account->deposit(200); // Assuming the deposit method was implemented in the `Account` class.
-        logger.log("Deposited 200 to Savings Account S123.");
+        account->deposit(200, logger);  // Deposit logged
     }
 
-    // Display the menu and proceed with other actions
     runMenu(accounts, logger);
 
-    // Log the program end
     logger.log("Banking system ended.");
     return 0;
 }
+

@@ -9,7 +9,8 @@ private:
 
 public:
     CheckingAccount(string acctNum, double bal, double limit);
-    void withdraw(double amount) override;
+    void deposit(double amount, Logger& logger) override;  // Add Logger parameter here
+    void withdraw(double amount, Logger& logger) override; // Add Logger parameter here
     void display() const override;
 };
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip> // For formatting
+
+#include "Logger.h"
 using namespace std;
 
 // Constructor
@@ -21,7 +23,7 @@ void Account::display() const {
 }
 
 // Deposit
-void Account::deposit(double amount) {
+void Account::deposit(double amount, Logger& logger) {
     if (amount > 0) {
         balance += amount;
         cout << "Deposited " << amount << ". New balance: " << balance << endl;
@@ -32,7 +34,7 @@ void Account::deposit(double amount) {
 }
 
 // Withdraw
-void Account::withdraw(double amount) {
+void Account::withdraw(double amount, Logger& logger) {
     if (amount > 0 && amount <= balance) {
         balance -= amount;
         cout << "Withdrew " << amount << ". New balance: " << balance << endl;
