@@ -1,18 +1,23 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-#include <string>
+#include <iostream>
+using namespace std;
 
 class Account {
-private:
-    std::string accountHolderName;
+protected:
+    string accountNumber;
     double balance;
 
 public:
-    Account(const std::string &name, double initialBalance);
+    // Constructor
+    Account(string acctNum, double bal);
+
+    // Methods
     void deposit(double amount);
-    bool withdraw(double amount);
-    void display() const;
+    void withdraw(double amount);
+    double getBalance();
+    virtual void display();  // Virtual function for future overrides
 };
 
-#endif
+#endif  // ACCOUNT_H
