@@ -1,26 +1,22 @@
-#include "Logger.h"
-#include <iostream>
-#include <ctime>
-#include <iomanip>
+#ifndef LOGGER_H
+#define LOGGER_H
 
-Logger::Logger(const std::string& filename) {
-    logFile.open(filename, std::ios::app);
-    if (!logFile) {
-        std::cerr << "Failed to open log file: " << filename << std::endl;
-    }
-}
+#include <string>
+using namespace std;
 
-void Logger::log(const std::string& message) {
-    if (logFile) {
-        // Add timestamp
-        auto t = std::time(nullptr);
-        auto tm = *std::localtime(&t);
-        logFile << "[" << std::put_time(&tm, "%Y-%m-%d %H:%M:%S") << "] " << message << std::endl;
-    }
-}
+class Logger {
+private:
+    string filename;
 
-Logger::~Logger() {
-    if (logFile) {
-        logFile.close();
-    }
-}
+public:
+    // Constructor that accepts the log filename
+    Logger(const string& file);
+
+    // Function to log messages
+    void log(const string& message);
+
+    // Destructor (if needed for file cleanup, etc.)
+    ~Logger();
+};
+
+#endif // LOGGER_H
