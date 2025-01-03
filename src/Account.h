@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "Logger.h"
 using namespace std;
 
 class Account {
