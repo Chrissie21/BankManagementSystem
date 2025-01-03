@@ -1,6 +1,17 @@
 #include <iostream>
+#include "Account.h"
 
 int main() {
-    std::cout << "Welcome to the Bank Management System!" << std::endl;
+    Account acc("Chris Balele", 1000.0);
+    acc.display();
+
+    acc.deposit(500.0);
+    acc.display();
+
+    acc.withdraw(300.0);
+    acc.display();
+
+    acc.withdraw(2000.0); // Should show insufficient balance.
+
     return 0;
 }
