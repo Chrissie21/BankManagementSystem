@@ -20,6 +20,11 @@ public:
     virtual void withdraw(double amount);
     void displayTransactions() const; // Display transaction log
     virtual ~Account();
+
+    string getAccountNumber() const {
+        // New getter method
+        return accountNumber;
+    }
 };
 
 #endif // ACCOUNT_H
