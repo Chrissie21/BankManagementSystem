@@ -1,20 +1,25 @@
 #include "Logger.h"
-#include <fstream>
 #include <iostream>
+using namespace std;
 
-Logger::Logger(const string& file) : filename(file) {}
-
-void Logger::log(const string& message) {
-    ofstream logFile;
-    logFile.open(filename, ios::app); // Open the file in append mode
-    if (logFile.is_open()) {
-        logFile << message << endl; // Write message to log file
-        logFile.close(); // Close the log file
-    } else {
+// Constructor initializes the log file
+Logger::Logger(const string& filename) {
+    logFile.open(filename, ios::out | ios::app);  // Open log file in append mode
+    if (!logFile) {
         cerr << "Error opening log file!" << endl;
     }
 }
 
+// Logs the message to the file
+void Logger::log(const string& message) {
+    if (logFile) {
+        logFile << message << endl;  // Write the message to the log file
+    }
+}
+
+// Destructor closes the log file
 Logger::~Logger() {
-    // Cleanup resources if needed
+    if (logFile.is_open()) {
+        logFile.close();
+    }
 }

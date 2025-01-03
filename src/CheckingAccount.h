@@ -2,6 +2,7 @@
 #define CHECKINGACCOUNT_H
 
 #include "Account.h"
+#include "Logger.h"
 
 class CheckingAccount : public Account {
 private:
