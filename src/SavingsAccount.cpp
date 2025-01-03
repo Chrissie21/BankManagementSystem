@@ -18,12 +18,11 @@ void SavingsAccount::deposit(double amount, Logger& logger) {
     }
 }
 
-void SavingsAccount::applyInterest() {
+void SavingsAccount::applyInterest(Logger& logger) {
     double interest = balance * interestRate / 100;
     balance += interest;
     cout << "Applied interest of " << interest << " to account " << accountNumber << ". New balance: " << balance << endl;
-    // Log the interest application
-    Logger logger("banking_log.txt"); // or use existing logger
+    // Log the interest application using the provided logger
     logger.log("Applied interest of " + to_string(interest) + " to Savings Account " + accountNumber + ". New balance: " + to_string(balance));
 }
 

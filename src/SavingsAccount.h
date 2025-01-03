@@ -10,8 +10,8 @@ private:
 
 public:
     SavingsAccount(string acctNum, double bal, double rate);
-    void deposit(double amount, Logger& logger) override;  // Add Logger parameter here
-    void applyInterest();
+    void deposit(double amount, Logger& logger) override;
+    void applyInterest(Logger &logger);
     void display() const override;
 };
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip> // For formatting
+#include <Logger.h>
 
 #include "Logger.h"
 using namespace std;
